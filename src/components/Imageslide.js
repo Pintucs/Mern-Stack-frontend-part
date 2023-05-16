@@ -9,20 +9,20 @@ const Imageslide = () => {
                 <Row>
                     <Col>
                     <Carousel fade>
-                        <Carousel.Item interval={500} >
-                            <img src="image/a.jpg" className='d-block w-100'/>
+                        <Carousel.Item  >
+                            <img src="image/a.jpg" alt="a" className='d-block w-100'/>
                         </Carousel.Item> 
-                        <Carousel.Item interval={500}>
-                            <img src="image/b.jpg" className='d-block w-100'/>
+                        <Carousel.Item >
+                            <img src="image/b.jpg" alt="a" className='d-block w-100'/>
+                        </Carousel.Item>
+                        <Carousel.Item >
+                            <img src="image/c.jpg" alt="a" className='d-block w-100'/>
                         </Carousel.Item>
                         <Carousel.Item interval={500}>
-                            <img src="image/c.jpg" className='d-block w-100'/>
+                            <img src="image/d.jpg" alt="a"className='d-block w-100'/>
                         </Carousel.Item>
-                        <Carousel.Item interval={500}>
-                            <img src="image/d.jpg" className='d-block w-100'/>
-                        </Carousel.Item>
-                        <Carousel.Item interval={500}>
-                            <img src="image/e.jpg" className='d-block w-100'/>
+                        <Carousel.Item>
+                            <img src="image/e.jpg" alt="a" className='d-block w-100'/>
                         </Carousel.Item>
                     </Carousel>
                     </Col>

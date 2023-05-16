@@ -12,7 +12,7 @@ const CardDetails = () => {
                     <div className='col-2'><Card />
                     <Button>Add to card</Button>
                     </div>
-                    <diV className='col-2'> fbbfjkslvsdkf.sbdvjlbvdsk </diV>
+                    <diV className='col-2'> fbb </diV>
                 </div>
         </>
 

@@ -11,7 +11,6 @@ const Login = () => {
     const navigate = useNavigate()
 
     const loginData = async () => {
-        // console.log(password,email)
         let getData = await fetch("http://localhost:5000/login", {
             method: "post",
             headers: {
