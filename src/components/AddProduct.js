@@ -28,7 +28,6 @@ const AddPosduct = () => {
         })
         let add = await result.json()
         alert("Product Added successfully")
-        localStorage.setItem("Product item", JSON.stringify(add))
         navigate("/")
     }
 

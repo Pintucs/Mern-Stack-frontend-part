@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from "react-router-dom"
 import { Button } from 'react-bootstrap'
 import Header from './Header'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 
 const UpdatePosduct = () => {
     const [name, setPname] = useState()
@@ -12,7 +11,7 @@ const UpdatePosduct = () => {
     const params = useParams()
     const navigate = useNavigate()
 
-    
+
     const getProduct = async () => {
         let result = await fetch(`http://localhost:5000/products/${params.id}`)
         let r = await result.json()
@@ -21,10 +20,10 @@ const UpdatePosduct = () => {
         setPmodel(r.model)
         setPprize(r.prize)
     }
-    
+
     useEffect(() => {
         getProduct();
-      }, [])
+    }, [])
 
 
     const success = async () => {

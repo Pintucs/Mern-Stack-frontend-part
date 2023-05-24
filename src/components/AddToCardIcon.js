@@ -1,8 +1,12 @@
 import React from 'react'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+// import { useParams ,useNavigate} from 'react-router-dom';
 
 const AddToCardIcon = () => {
-    const a = 5
+    const auth = localStorage.getItem("count")
+
+
+
     const counter =
     {
         position: "relative", top: "-35px", padding: " 1px 6px", borderRadius: "50%",
@@ -11,7 +15,7 @@ const AddToCardIcon = () => {
     return (
         <>
             <AddShoppingCartIcon />
-            <span style={counter}>{a}</span>
+            <span style={counter}>{JSON.parse(auth).count}</span>
         </>
 
     )

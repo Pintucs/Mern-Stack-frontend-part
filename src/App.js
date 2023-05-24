@@ -10,7 +10,6 @@ import Forget from './components/Forget'
 import CardDetails from './components/CardDetails'
 import Private from './components/Private'
 import AddProduct from './components/AddProduct'
-import ProductList from './components/ProductList'
 import AddToCardIcon from './components/AddToCardIcon'
 import AddToCard from './components/AddToCard'
 import UpdateProduct from './components/UpdateProduct'
@@ -24,15 +23,15 @@ const App = () => {
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/forget" element={<Forget />} />
-                <Route path="/" element={<Main />} />
+
 
                 <Route element={<Private />}>
-                    <Route path="/addtocardIcon" element={<AddToCardIcon />} />
-                    <Route path="/addtocard" element={<AddToCard />} />
+                    <Route path="/addtocardicon/:id" element={<AddToCardIcon />} />
+                    <Route path="/" element={<Main />} />
+                    <Route path="/addtocard/:id" element={<AddToCard />} />
                     <Route path="/card" element={<Card />} />
                     <Route path="/carddetails" element={<CardDetails />} />
                     <Route path="/addproduct" element={<AddProduct />} />
-                    <Route path="/productlist" element={<ProductList />} />
                     <Route path="/updateproduct/:id" element={<UpdateProduct />} />
                     <Route path="/contect" element={<Contect />} />
                 </Route>

@@ -1,42 +1,49 @@
 import React, { useEffect, useState } from 'react'
-import { Button } from 'react-bootstrap'
 import Header from './Header'
+import { useParams } from 'react-router-dom'
+import { Button } from 'react-bootstrap'
 
 const AddToCard = () => {
-  const [product, setProduct] = useState([])
-  useEffect(()=>{
-    getData()
-  })
+  const params = useParams()
+  const [name, setPname] = useState()
+  const [prize, setPprize] = useState()
+  const [count, setCount] = useState(1)
 
 
-  const getData = async (id) => {
-    const result = await fetch(`http://localhost:5000/products${id}`);
-    const show = await result.json()
-    setProduct(show)
+  const getProduct = async () => {
+    let result = await fetch(`http://localhost:5000/products/${params.id}`)
+    let r = await result.json()
+    setPname(r.name)
+    setPprize(r.prize)
   }
 
+  useEffect(() => {
+    getProduct()
+  }, [])
+
+  const inc = () => {
+    setCount(count + 1)
+  }
+
+  const dic = () => {
+    if (count > 1) {
+      setCount(count - 1)
+    }
+
+  }
   return (
     <>
-    <Header />
-      <div className='row' style={{ marginLeft: "auto", marginRight: "auto", width: "50%" }}>
-        <div className='col'>Name</div>
-        <div className='col'>prize</div>
-        <div className='col'>counter</div>
-        <div className='col'><Button>Oparetion</Button></div>
-      </div>
-      {product.map((v,index)=>
-      
-      <div className='row' style={{ marginLeft: "auto", marginRight: "auto", width: "50%" }} key={index}>
-          <div className='col'>{v.name}</div>
-          <div className='col'>{v.prize}</div>
-          <div className='col'>{v.lenght}</div>
-          <div className='col'><Button>delete</Button></div>
+      <Header />
+      <div className='container d-flex justify-content-between h3 p-3 m-3' style={{ width: "80%", backgroundColor: "#2C2929", color: "white" }}>
+        <div>{name}</div>
+        <div>{prize * count}</div>
+        <div>
+          <button onClick={inc}>+</button>
+          {count}
+          <button onClick={dic} className='ms-2'>-</button>
         </div>
-      
-      )
-        
-      }
-
+        <Button className='m-1'>Proceed to Buy</Button>
+      </div>
     </>
   )
 }
