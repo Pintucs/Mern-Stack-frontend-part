@@ -26,7 +26,7 @@ const App = () => {
 
 
                 <Route element={<Private />}>
-                    <Route path="/addtocardicon/:id" element={<AddToCardIcon />} />
+                    <Route path="/addtocardicon" element={<AddToCardIcon />} />
                     <Route path="/" element={<Main />} />
                     <Route path="/addtocard/:id" element={<AddToCard />} />
                     <Route path="/card" element={<Card />} />

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,useCallback } from 'react'
 import { Button } from 'react-bootstrap'
 import Header from './Header'
 import { useParams, useNavigate } from 'react-router-dom'
@@ -12,18 +12,31 @@ const UpdatePosduct = () => {
     const navigate = useNavigate()
 
 
-    const getProduct = async () => {
+    // const getProduct = async () => {
+    //     let result = await fetch(`http://localhost:5000/products/${params.id}`)
+    //     let r = await result.json()
+    //     setPname(r.name)
+    //     setPcompany(r.company)
+    //     setPmodel(r.model)
+    //     setPprize(r.prize)
+    // }
+
+    // useEffect(() => {
+    //     getProduct();
+    // }, [])
+
+    const getProduct = useCallback(async () => {
         let result = await fetch(`http://localhost:5000/products/${params.id}`)
         let r = await result.json()
         setPname(r.name)
         setPcompany(r.company)
         setPmodel(r.model)
         setPprize(r.prize)
-    }
-
-    useEffect(() => {
+      }, [params.id, setPname, setPcompany, setPmodel, setPprize]);
+      
+      useEffect(() => {
         getProduct();
-    }, [])
+      }, [getProduct]);
 
 
     const success = async () => {

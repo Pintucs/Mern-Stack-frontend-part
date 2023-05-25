@@ -1,12 +1,13 @@
 import React from 'react'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-// import { useParams ,useNavigate} from 'react-router-dom';
+// import { useParams } from 'react-router-dom'
+
+// import { useParams} from 'react-router-dom';
 
 const AddToCardIcon = () => {
-    const auth = localStorage.getItem("count")
-
-
-
+    // const params=useParams()
+    // const auth = localStorage.getItem(`${params.id}`)
+    const auth = localStorage.getItem('count');
     const counter =
     {
         position: "relative", top: "-35px", padding: " 1px 6px", borderRadius: "50%",
@@ -15,7 +16,9 @@ const AddToCardIcon = () => {
     return (
         <>
             <AddShoppingCartIcon />
-            <span style={counter}>{JSON.parse(auth).count}</span>
+           { auth?<span style={counter}>{JSON.parse(auth).count}</span>:
+           <span style={counter}></span>
+}
         </>
 
     )

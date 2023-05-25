@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,useCallback } from 'react'
 import Header from './Header'
-import { useParams } from 'react-router-dom'
+import { useParams,useNavigate } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
 
 const AddToCard = () => {
@@ -8,18 +8,33 @@ const AddToCard = () => {
   const [name, setPname] = useState()
   const [prize, setPprize] = useState()
   const [count, setCount] = useState(1)
+  const navigate = useNavigate()
 
+  // const getProduct = async () => {
+  //   let result = await fetch(`http://localhost:5000/products/${params.id}`)
+  //   let r = await result.json()
+  //   setPname(r.name)
+  //   setPprize(r.prize)
+  // }
 
-  const getProduct = async () => {
+  // useEffect(() => {
+  //   getProduct()
+  // }, [])
+const submit =()=>{
+  alert("Thank you for purchase this item")
+  navigate("/")
+}
+
+  const getProduct = useCallback(async () => {
     let result = await fetch(`http://localhost:5000/products/${params.id}`)
     let r = await result.json()
     setPname(r.name)
     setPprize(r.prize)
-  }
-
+  }, [params.id])
+  
   useEffect(() => {
     getProduct()
-  }, [])
+  }, [getProduct])
 
   const inc = () => {
     setCount(count + 1)
@@ -42,7 +57,7 @@ const AddToCard = () => {
           {count}
           <button onClick={dic} className='ms-2'>-</button>
         </div>
-        <Button className='m-1'>Proceed to Buy</Button>
+        <Button className='m-1' onClick={submit}>Proceed to Buy</Button>
       </div>
     </>
   )

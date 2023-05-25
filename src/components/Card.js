@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom'
 import { Button } from 'react-bootstrap';
 const Card = () => {
   const [product, setProduct] = useState([])
-  const [count, setCount] = useState(null)
+  const [count, setCount] = useState(1)
   const [id, setId] = useState(null)
 
-  // if (id === `${id}`) {
-  //    localStorage.setItem(`${id}`, JSON.stringify({ count }))
-  // }
-  localStorage.setItem(`count`, JSON.stringify({ count }))
+     localStorage.setItem(`${id}`, JSON.stringify({ id }))
+     localStorage.setItem(`count`, JSON.stringify({ count }))
+
+
 
   const getData = async () => {
     const result = await fetch("http://localhost:5000/products");
@@ -65,7 +65,7 @@ const Card = () => {
                 <p className="card-text"> {v.company}</p>
                 <div className="d-grid gap-2">
                   {/* <Link to={"/addtocard/" + v._id} > */}
-                  <Link to="/" >
+                  <Link to={"/addtocard/" + v._id} >
                     <Button className="btn btn-primary" onClick={() => {
                       setCount(count + 1)
                       setId(v._id)

@@ -27,6 +27,7 @@ const AddPosduct = () => {
             body: JSON.stringify({ name, prize, model, company })
         })
         let add = await result.json()
+        console.log(add)
         alert("Product Added successfully")
         navigate("/")
     }
